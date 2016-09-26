@@ -26,6 +26,7 @@ if __name__ == "__main__":
             elif linea[0] == "resta":
                 linea.pop(0)
                 resultado = int(linea[0])
+                linea.pop(0)
                 for i in linea:
                     resultado = CalculadoraHija.CalculadoraHija.minus(resultado, int(i))
                 print(resultado)
