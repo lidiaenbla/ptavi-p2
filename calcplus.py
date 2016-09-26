@@ -2,30 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import sys
-
-class Calculadora():
-    def plus(op1, op2):
-        """ Function to sum the operands """
-        return op1 + op2
-
-
-    def minus(op1, op2):
-        """ Function to substract the operands """
-        return op1 - op2
-
-class CalculadoraHija(Calculadora):
-    def multiply(op1, op2):
-        """ Function to sum the operands """
-        return op1 * op2
-
-
-    def divide(op1, op2):
-        """ Function to substract the operands """
-        try:
-            resultado = op1 / op2
-        except ZeroDivisionError:
-            sys.exit("Error: division by zero")
-        return resultado
+import calcoo
+import CalculadoraHija
 
 
 if __name__ == "__main__":
@@ -40,17 +18,29 @@ if __name__ == "__main__":
         for word in line.split(","):
             operandos.append(word)
         print(operandos)
-        if operandos[0] == "sumar":
+        if operandos[0] == "suma":
             operandos.pop(0)
             for i in operandos:
-                resultado = resultado + int(i)
+                resultado = CalculadoraHija.CalculadoraHija.plus(resultado, int(i))
             print(resultado)
-        elif operandos[0] == "restar":
+        elif operandos[0] == "resta":
             operandos.pop(0)
+            resultado = int(operandos[0])
             for i in operandos:
-                resultado = resultado - int(i)
+                resultado = CalculadoraHija.CalculadoraHija.minus(resultado, int(i))
             print(resultado)
-
+        elif operandos[0] == "multiplica":
+            operandos.pop(0)
+            resultado = 1
+            for i in operandos:
+                resultado = CalculadoraHija.CalculadoraHija.multiply(resultado, int(i))
+            print(resultado)
+        elif operandos[0] == "divide":
+            operandos.pop(0)
+            resultado = int(operandos[0])*int(operandos[0])
+            for i in operandos:
+                resultado = CalculadoraHija.CalculadoraHija.divide(resultado, int(i))
+            print(resultado)
 
     
     fichero.close()
